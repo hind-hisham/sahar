@@ -26,10 +26,11 @@ html,body{
 section {
     width: 100vw;
     height: 100vh;
-    min-height: 100vh;
     padding: 4em;
     position: relative;
-    margin: 2em 0;
+    margin: 2em auto;
+    max-width: 1300px;
+
 }
 section::before {
     content: '';
@@ -75,7 +76,9 @@ a.btn {
 a.btn:hover {
     box-shadow: 0 0 20px var(--prim-light),0 0 50px var(--prim-light),0 0 80px var(--prim-light);
 }
-
+.mobile-links,.mobile-ham{
+    display: none;
+}
 
 nav {
     display: flex;
@@ -83,6 +86,11 @@ nav {
     align-items: center;
     height: 80px;
     padding: 0 3em;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    backdrop-filter: blur(7px);
+    z-index: 10;
 }
 
 nav .links a {
@@ -153,15 +161,13 @@ nav .links a.active {
     width: 80%;
 }
 .hero .hero-img {
-    width: 50%;
+    width: 40%;
     height: 100%;
     position: relative;
 }
 
 .hero-img img {
-    width: 100%;
-    height: 110%;
-    object-fit: cover;
+    height: 100%;
 }
 
 .decor {
@@ -254,12 +260,10 @@ nav .links a.active {
 .section-header {
     display: flex;
     align-items: center;
-
 }
 
 .section-header h2 {
     font-size: 3em;
-   
 }
 
 .section-header img {
@@ -391,8 +395,8 @@ nav .links a.active {
 /* Clinical Experience */
 .clinical-ex{
     height: auto;
-        background: url(../img/clinical-1.png);
-        background-repeat: no-repeat;
+    background: url(../img/clinical-1.png);
+    background-repeat: no-repeat;
 }
 .clinical-ex h2{
     margin-bottom: 1em;
@@ -451,11 +455,11 @@ nav .links a.active {
     justify-content: space-between;
     align-items: center;
     gap: 1em;
-    padding-top: 2em;
     background: url(../img/edu-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0;
+    height: auto;
 }
 .edu-1{
     border-radius: 7px;
@@ -498,7 +502,7 @@ footer{
     height: 90vh;
     padding: 4em;
     color: #fff;
-     background-image: url(../img/footer-2.png);
+    background-image: url(../img/footer-2.png);
     background-repeat: no-repeat;
     background-size:40%;
     background-position-x: right;
@@ -572,4 +576,153 @@ footer a{
     color: #fff;
     padding: .8em;
     text-align: center;
+}
+/***************** media for tablet ***************************/
+@media (max-width:860px){
+    .mobile-ham{
+        display: inline-block;
+        cursor: pointer;
+    }
+    .mobile-links{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color:#00000099 ;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+    }
+    .mobile-links a:hover,
+    .mobile-links a.active {
+    color: var(--prim-color-1);
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+    .mobile-links span{
+        cursor: pointer;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+    .mobile-links span img{
+        width: 20px;
+    }
+    .mobile-links a{
+        color: #fff;
+        margin-bottom:2em;
+        font-size: 1.4em;    transition: all .5s ease;
+        transition: all .5s ease;
+    }
+    .show{
+        display: flex;
+    }
+    .hied-mobile{
+    display: none;
+    }
+    section{
+        height: auto;
+    }
+    .hero{
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+    .hero .content{
+        width: 100%;
+    }
+    .hero .hero-img{
+        width: 70%;
+    }
+    .hero-img img{
+        width: 100%;
+    }
+    /* work */
+    .work{
+        flex-direction: column;
+    }
+    /* about me */
+    .about-content{
+        flex-direction: column-reverse;
+        padding:3.5em 3em;
+    }
+    .about-content .content,.about-content .about-img{
+        width: 100%;
+    }
+    /* experence */
+    .exper{
+        flex-direction: column;
+    }
+    .ex-content{
+        width: 100%;
+    }
+    /* clinical */
+    .clinical-ex .part{
+        flex-direction: column-reverse;
+        gap: 2em;
+    }
+    .clin-cont,.part .clin-img{
+        width: 100%;
+    }
+    .part:nth-of-type(2){
+        order: 1;
+    }
+    /* edcation */
+    .edu{
+       flex-wrap: wrap;
+    }
+    .edu-1{
+        width: 45%;
+        margin-bottom: 35px;
+        height: auto;
+    }
+    /* contact */
+    footer{
+        height: auto;
+        background-size: 100%;
+    }
+    footer h2{
+        margin-bottom: 1em;
+    }
+    .footer-content{
+        flex-direction: column;
+    }
+    footer .links,.footer-content .form{
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    footer i{
+        margin: .8em;
+    }
+
+}
+@media (max-width:600px){
+    body{
+        font-size: 14px;
+    }
+    .work .section-header{
+        position: relative;
+        margin-bottom: 50px;
+    }
+    .section-header img{
+        position: absolute;
+        right: 0;
+        left: unset;
+        z-index: -1;
+        width: 200px;
+        height: 200px;
+    }
+    .work-content {
+        flex-direction: column;
+    }
+    .work-content .card {
+        width: 100%;
+        padding-bottom: 2em;
+        border-bottom: 1px solid var(--prim-color-2);
+    }
+    .edu-1{
+        width: 100%;
+    }
 }
